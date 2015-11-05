@@ -1,0 +1,39 @@
+$mycolor: #333;
+
+$breaksmall: 768px;
+$breakmedium: 992px;
+$breaklarge: 1024px;
+
+#body {
+	background-color: $mycolor;
+	width: 100vw;
+	height: 270em;
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+}
+
+.titles {
+	height: 10em;
+	position: fixed;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	h1 {
+		font-size: 7em;
+		@media (max-width: $breakmedium) and (min-width: $breaksmall){
+			font-size: 7em;
+		}
+		@media (max-width: $breaksmall){
+			font-size: 4em;
+		}
+	}
+	.hex {
+		top: 3em;
+	}
+	.rgb {
+		top: 8em;
+	}
+}
