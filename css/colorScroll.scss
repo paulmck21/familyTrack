@@ -3,11 +3,12 @@ $mycolor: #333;
 $breaksmall: 768px;
 $breakmedium: 992px;
 $breaklarge: 1024px;
+$bodyheight: 65536px;
 
 #body {
 	background-color: $mycolor;
 	width: 100vw;
-	height: 270em;
+	height: $bodyheight;
 }
 
 .row {

@@ -75,12 +75,17 @@ window.onscroll = function() {scrolled() }
 function scrolled () {
 	var docBody = document.body;
 	var dist = document.getElementById("body").scrollTop;
-
+	console.log("dist is " + dist);
+	
 	//assigning random values to r,g and b
 	//assuring they are under 255 and are integers
 	var red = Math.floor((dist / 2) % 255);
 	var green = Math.floor((dist / 3) % 255);
 	var blue = Math.floor((dist / 4) % 255);
+
+
+
+
 
 	//creating rgb string and cconverting it to hex
 	var rgbVal = 'rgb (' + red + ',' + green + ',' + blue + ')';
