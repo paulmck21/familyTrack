@@ -1,32 +1,37 @@
+
+//Program to change the background colour of a site in relation to 
+//the distance from the top of the page.
+//Also involves a conversion from rgb to hex that I wrote myself.
+
+
+
 var hexArray = ['#'];
 
+//I may have stolen the rgb regex though.
+//This checks the input as valid rgb values and creates the array
 function convertToHex(rgb){
 	 var rgbArray = /^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i.exec(rgb);
 
+	 //resetting the hexArray
 	 hexArray = ['#'];
 
-
-
+	 //Creating the hex format
 	 for (i=1; i<4; i++){
 		var color1 = (0 + Math.floor(parseFloat((rgbArray[i])/16)));
 		var color2 = (0 + (parseFloat(rgbArray[i],10)%16));
 
-		
-
-		console.log('color1 is ' + color1 + '. color2 is ' + color2);
-
+		//assigning letters to values over 10
 		assignLetters(color1);
 		assignLetters(color2);
 
 	}
 
+	//join array to create a string to feed to the DOM 
 	return newHex = hexArray.join("");
-
-	console.log('newHex is ' + newHex);
 }
 
-
-
+//function to assign letter values to numbers over 10
+//and to add all values to the hexArray
 function assignLetters(color){
 	
 		switch (color){
@@ -61,56 +66,50 @@ function assignLetters(color){
 	
 }
 
-
-
-
-
+//On loading and on scrolling call the scrolled function
 window.onload = function() {scrolled() }
 window.onscroll = function() {scrolled() }
 
+//Maybe I should cut down this function as it grew a tad larger than I had anticipated.
+//Function to assign rgb values based on the distance from the top of the document.
 function scrolled () {
 	var docBody = document.body;
 	var dist = document.getElementById("body").scrollTop;
 
-	var red = dist / 2;
-	var green = dist / 3;
-	var blue = dist / 4
+	//assigning random values to r,g and b
+	//assuring they are under 255 and are integers
+	var red = Math.floor((dist / 2) % 255);
+	var green = Math.floor((dist / 3) % 255);
+	var blue = Math.floor((dist / 4) % 255);
 
-	var redCapped = red <= 255 ? Math.floor(red) : Math.floor(red % 255);
-	var greenCapped = green <= 255 ? Math.floor(green) :  Math.floor(green % 255);
-	var blueCapped = blue <= 255 ? Math.floor(blue) :  Math.floor(blue % 255);
-	console.log('redCapped is ' + redCapped + ' and greenCapped is ' + greenCapped + ' and blueCapped is ' + blueCapped);
-
-
-	var rgbVal = 'rgb (' + redCapped + ',' + greenCapped + ',' + blueCapped + ')';
-	console.log('rgbVal is ' + rgbVal);
+	//creating rgb string and cconverting it to hex
+	var rgbVal = 'rgb (' + red + ',' + green + ',' + blue + ')';
 	var hexVal = convertToHex(rgbVal);
-	var dist = document.getElementById("body").scrollTop;
 
+	//change the background color to hexVal
 	document.getElementById("body").style.backgroundColor = hexVal;
 
-	var hexDiv = document.getElementById('hex');
+	//Call function to write values on screen
+	writeValues(red, green, blue, hexVal, rgbVal);
 	
+}
+
+//function to write hex and rgb values in the DOM
+function writeValues(red, green, blue, hexVal, rgbVal){
+
+	//grab the 2 title elements from the DOM
 	var hexTitle = document.getElementById('hexTitle');
 	var rgbTitle = document.getElementById('rgbTitle');
-	var hexText = document.createTextNode(hexVal);
 
-
-	hexTitle.innerHTML = '';
-
-	var textrgbVal = 'rgb (' + (255 - redCapped) + ',' + (255 - greenCapped) + ',' + (255 - blueCapped) + ')';
+	//set the colour of the text to the opposite of the background, roughly
+	var textrgbVal = 'rgb (' + (255 - red) + ',' + (255 - green) + ',' + (255 - blue) + ')';
 	var textHexVal = convertToHex(textrgbVal);
-	hexTitle.innerHTML = textHexVal;
-	rgbTitle.innerHTML = rgbVal;
-
 
 	document.getElementById("body").style.color = textHexVal;
 
-
-	console.log('dist is ' + dist);
+	//set the text in the title to the values of the background colour
+	hexTitle.innerHTML = hexVal;
+	rgbTitle.innerHTML = rgbVal;
 }
-
-
-
 
 

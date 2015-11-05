@@ -10,17 +10,12 @@ $breaklarge: 1024px;
 	height: 270em;
 }
 
-.container {
-	width: 100%;
-	height: 100vh;
-}
-
-.titles {
+.row {
 	height: 10em;
 	position: fixed;
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	max-width: 100vw;
+	// margin-left: auto;
+	// margin-right: auto;
 	h1 {
 		font-size: 7em;
 		@media (max-width: $breakmedium) and (min-width: $breaksmall){
@@ -32,8 +27,10 @@ $breaklarge: 1024px;
 	}
 	.hex {
 		top: 3em;
+	
 	}
 	.rgb {
 		top: 8em;
+		
 	}
 }

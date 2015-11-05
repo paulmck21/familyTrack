@@ -3,27 +3,21 @@
   width: 100vw;
   height: 270em; }
 
-.container {
-  width: 100%;
-  height: 100vh; }
-
-.titles {
+.row {
   height: 10em;
   position: fixed;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto; }
-  .titles h1 {
+  max-width: 100vw; }
+  .row h1 {
     font-size: 7em; }
     @media (max-width: 992px) and (min-width: 768px) {
-      .titles h1 {
+      .row h1 {
         font-size: 7em; } }
     @media (max-width: 768px) {
-      .titles h1 {
+      .row h1 {
         font-size: 4em; } }
-  .titles .hex {
+  .row .hex {
     top: 3em; }
-  .titles .rgb {
+  .row .rgb {
     top: 8em; }
 
 /*# sourceMappingURL=colorScroll.css.map */
