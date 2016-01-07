@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Colour Scroll</title>
+	<title>Family Track</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,56 +13,41 @@
 </head>
 <body id="body">
 
-<ul class="famList">
-	<li class="famItem fergus">
-		<div class="">
-			<h1>Fergus</h1>
-			<h3>Dublin</h3>
-			<h3>Time</h3>
-
-		</div>
-	</li>
-	<li class="famItem kathy">
-		<div class="">
-			<h1>Kathy</h1>
-			<h3>Dublin</h3>
-			<h3>Time</h3>
-
-		</div>
-	</li>
-	<li class="famItem kate">
-		<div class="">
-			<h1>Kate</h1>
-			<h3>Vancouver</h3>
-			<h3>Time</h3>
-		</div>
-	</li>
-	<li class="famItem jill">
-		<div class="">
-			<h1>Jill</h1>
-			<h3>Gold Coast</h3>
-			<h3>Time</h3>
-
-		</div>
-	</li>
-	<li class="famItem paul">
-		<div class="">
-			<h1>Paul</h1>
-			<h3>London</h3>
-			<h3>Time</h3>
-
-		</div>
-	</li>
-</ul>
-	
-
-	
-
-	
-
-
-	</div>
-
+	<ul class="screens">
+		<li class="viewMembers">
+			<div class="membersDiv">
+				<ul class="members">
+					<ul class="memberItem member0">
+						<li class="col-xs-3">Paul</li>
+						<li class="col-xs-4">London</li>
+						<li class="col-xs-5">21:00:00</li>
+					</ul>
+					<ul class="memberItem member1">
+						<li class="col-xs-3">Paul</li>
+						<li class="col-xs-4">London</li>
+						<li class="col-xs-5">21:00:00</li>
+					</ul>
+					<ul class="memberItem member2">
+						<li class="col-xs-3">Paul</li>
+						<li class="col-xs-4">London</li>
+						<li class="col-xs-5">21:00:00</li>
+					</ul>
+				</ul>
+			</div>
+		</li>
+		<li class="add addMembers">
+			<div class="addingDiv">
+				<h2>Add a name to the family</h2>
+				<input class="memberNameInput" type="text" maxlength="16">
+			</div>
+		</li>
+		<li class="add addCity">
+			<div class="addingDiv">
+				<h2>And where are they?</h2>
+				<input class="memberCityInput" type="text" maxlength="16">
+			</div>
+		</li>
+	</ul>
 
 	
 
@@ -70,6 +55,11 @@
 	
 	<script src='js/jquery-1.11.2.min.js'></script>
 	<script src='js/bootstrap.min.js'></script>
-	<!-- <script src='js/colorScroll.js'></script> -->
+	<script src='js/moment.js'></script>
+	<script src='js/moment-timezone/builds/moment-timezone-with-data.js'></script>
+	<script src='js/typeahead.js/bloodhound.min.js'></script>
+	<script src='js/typeahead.js/typeahead.bundle.min.js'></script>
+	<script src='js/typeahead.js/typeahead.jquery.min.js'></script>
+	<script src='js/familyTrack.js'></script>
 </body>
 </html>
