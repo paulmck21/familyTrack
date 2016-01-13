@@ -16,37 +16,28 @@
 	<ul class="screens">
 		<li class="viewMembers">
 			<div class="membersDiv">
-				<ul class="members">
-					<ul class="memberItem member0">
-						<li class="col-xs-3">Paul</li>
-						<li class="col-xs-4">London</li>
-						<li class="col-xs-5">21:00:00</li>
-					</ul>
-					<ul class="memberItem member1">
-						<li class="col-xs-3">Paul</li>
-						<li class="col-xs-4">London</li>
-						<li class="col-xs-5">21:00:00</li>
-					</ul>
-					<ul class="memberItem member2">
-						<li class="col-xs-3">Paul</li>
-						<li class="col-xs-4">London</li>
-						<li class="col-xs-5">21:00:00</li>
+				<ul id="members" class="members container-fluid">
+					<ul class="memberItem member0 row">
+						<li class="col-xs-3 col-xs-offset-3">Add New</li>
+						<li class="col-xs-3"><span class="glyphicon glyphicon-plus-sign addButton"></span></li>
 					</ul>
 				</ul>
 			</div>
 		</li>
+		<form>
 		<li class="add addMembers">
 			<div class="addingDiv">
 				<h2>Add a name to the family</h2>
-				<input class="memberNameInput" type="text" maxlength="16">
+				<input class="memberNameInput" type="text" name='name' maxlength="16">
 			</div>
 		</li>
 		<li class="add addCity">
 			<div class="addingDiv">
 				<h2>And where are they?</h2>
-				<input class="memberCityInput" type="text" maxlength="16">
+				<input class="memberCityInput" type="text" name='city' maxlength="16">
 			</div>
 		</li>
+		</form>
 	</ul>
 
 	
@@ -55,11 +46,6 @@
 	
 	<script src='js/jquery-1.11.2.min.js'></script>
 	<script src='js/bootstrap.min.js'></script>
-	<script src='js/moment.js'></script>
-	<script src='js/moment-timezone/builds/moment-timezone-with-data.js'></script>
-	<script src='js/typeahead.js/bloodhound.min.js'></script>
-	<script src='js/typeahead.js/typeahead.bundle.min.js'></script>
-	<script src='js/typeahead.js/typeahead.jquery.min.js'></script>
 	<script src='js/familyTrack.js'></script>
 </body>
 </html>

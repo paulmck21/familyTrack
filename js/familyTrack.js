@@ -4,28 +4,38 @@ $(document).ready(function(){
 	var $memberCityInput = $('.memberCityInput');
 	var $addMembers = $('.addMembers');
 	var $addCity = $('.addCity');
-	var $membersList = $('.members');
-	var $membersListItems = $('.memberItem');
+	var $membersList = $('#members');
+	var membersListItems = $('.memberItem');
 
-	var listLen = $membersListItems.length;
+	
 
 	$memberNameInput.focus();
-	window.onload = sizeRows(listLen);
+	window.onload = sizeRows();
+
+	$addButton = $('.addButton');
+	$addButton.on('click', function(){
+		$addMembers.toggle();
+		$memberNameInput.focus();
+	})
 
 	var memberName;
 
-	var members = 0;
-
+	var objList = {};
 
 
 	$memberNameInput.keydown(function(event){
 		if (event.which == 13) {
-			var i = members.length;
+			
 			memberName = $memberNameInput.val().trim();
 			$addMembers.toggle();
 			$addCity.toggle();
 			$memberCityInput.focus();
+			$memberNameInput.val('');
 			return memberName;
+		} else if (event.which == 27){
+			$addMembers.toggle();
+			$memberNameInput.val('');
+			$memberCityInput.val('');
 		}
 	})
 
@@ -33,46 +43,57 @@ $(document).ready(function(){
 		if (event.which == 13) {
 			var cityName = $memberCityInput.val().trim();
 			$addCity.toggle();
+			var listLen = $('.memberItem').length;
 
-
-
-			var memberNo = $membersListItems.length;
-			console.log("listLen before " + memberNo)
-			var contentUl = '<ul class="memberItem member' + memberNo + '">';
-			var contentLi1 = '<li class="col-xs-3">' + memberName + '</li>';
-			var contentLi2 = '<li class="col-xs-4">' + cityName + '</li>';
+			objList[memberName] = {'name':memberName,'city':cityName};
+			
+			var memberNo = listLen;
+			var contentUl = '<ul class="memberItem member' + memberNo + ' row">';
+			var contentLi1 = '<li class="col-xs-3">' + objList[memberName].name + '</li>';
+			var contentLi2 = '<li class="col-xs-4">' + objList[memberName].city + '</li>';
 			var contentLi3 = '<li class="col-xs-5">21:00:00</li></ul>';
 
 			var content = contentUl + contentLi1 + contentLi2 + contentLi3;
-			$membersList.append(content);
-			var listLen = memberNo + 1;
+			$membersList.prepend(content);
+			$memberCityInput.val('');
 
-			sizeRows(listLen);
+			
+			
+			
+
+			console.log(objList);
+
+			
+			sizeRows();
+		} else if (event.which == 27){
+			$addCity.toggle();
+			$memberNameInput.val('');
+			$memberCityInput.val('');
 		}
 	})
 
 	
 	
 
-	function sizeRows(listLen){
+	function sizeRows() {
 		
-		console.log("listLen after " + listLen)
-		if (listLen > 2){
+		var listLen = $('.memberItem').length;
+		var newHeight = (100/listLen).toString() + 'vh';
+		
 
-			var newHeight = (100/listLen).toString() + 'vh';
-			
-			var i;
-			var shade = 1
-			for (i = 0; i < listLen; i++){
-				var memberNo = ('.member' + i).toString(); 
-				var $item = $(memberNo);
-				var rgbVal = 'rgba(0,0,0,' + shade + ')';
-				$item.css({'backgroundColor': rgbVal,
-							'height': newHeight});
-				console.log($item)
-				shade -= 0.15
-			}
+		var i;
+		var shade = 1
+		for (i = 0; i < listLen; i++){
+			var memberID = $('.memberItem')[i]; 
+			var $item = $(memberID);
+			var rgbVal = 'rgba(0,0,0,' + shade + ')';
+			$item.css({'backgroundColor': rgbVal,
+						'height': newHeight});
+
+			shade -= 0.15
 		}
+
+		
 	}
 
 })
